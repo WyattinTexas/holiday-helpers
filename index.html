@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holiday Helpers Co. — We Bring the Magic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFF8F0;
+    --warm: #F5EDE3;
+    --gold: #C8A96E;
+    --gold-light: #E8D5A8;
+    --forest: #2D4A3E;
+    --forest-light: #3D6B5A;
+    --charcoal: #2C2C2C;
+    --soft-pink: #F2D4D7;
+    --soft-green: #D4E8D9;
+    --soft-blue: #D4DEE8;
+    --soft-orange: #F2E0D4;
+    --soft-red: #E8D4D4;
+    --soft-purple: #E0D4E8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    background: var(--cream);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 248, 240, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+    padding: 16px 0;
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--charcoal);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--forest) !important;
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 24px;
+    font-size: 0.82rem !important;
+  }
+
+  .nav-cta:hover { background: var(--forest-light) !important; }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--charcoal);
+    transition: 0.3s;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    background: linear-gradient(180deg, var(--cream) 0%, var(--warm) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 169, 110, 0.08), transparent 70%);
+    top: 10%;
+    right: -10%;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200, 169, 110, 0.15);
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 520px;
+    margin: 0 auto 36px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--forest);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: var(--forest-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(45, 74, 62, 0.2);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--forest);
+    border: 1.5px solid var(--forest);
+  }
+
+  .btn-outline:hover {
+    background: var(--forest);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 24px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: #777;
+    max-width: 550px;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 50px;
+  }
+
+  /* HOW IT WORKS */
+  .how-it-works {
+    background: var(--warm);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+  }
+
+  .step {
+    text-align: center;
+    padding: 30px;
+  }
+
+  .step-num {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(200, 169, 110, 0.15);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+  }
+
+  .step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+
+  .step p {
+    font-size: 0.88rem;
+    color: #888;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* HOLIDAYS GRID */
+  .holidays-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .holiday-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px;
+    border: 1px solid rgba(200, 169, 110, 0.12);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .holiday-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    border-color: rgba(200, 169, 110, 0.3);
+  }
+
+  .holiday-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+
+  .holiday-card.st-patricks::before { background: linear-gradient(90deg, #2D8B4E, #7ED89F); }
+  .holiday-card.easter::before { background: linear-gradient(90deg, #C8A0D4, #F2D4E8, #A0D4C8); }
+  .holiday-card.halloween::before { background: linear-gradient(90deg, #E87D2D, #2C2C2C); }
+  .holiday-card.thanksgiving::before { background: linear-gradient(90deg, #C8762D, #E8C87D); }
+  .holiday-card.valentines::before { background: linear-gradient(90deg, #E84060, #F2A0B0); }
+  .holiday-card.fourth::before { background: linear-gradient(90deg, #2D4AA0, #E84040, #fff); }
+  .holiday-card.birthday::before { background: linear-gradient(90deg, #E8D42D, #E84080, #4080E8); }
+  .holiday-card.everyday::before { background: linear-gradient(90deg, var(--gold-light), var(--gold)); }
+
+  .holiday-emoji {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .holiday-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--forest);
+    margin-bottom: 4px;
+  }
+
+  .holiday-card .service-name {
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .holiday-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .holiday-card li {
+    font-size: 0.88rem;
+    color: #666;
+    padding: 5px 0;
+    padding-left: 18px;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .holiday-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold-light);
+  }
+
+  .holiday-card .optional {
+    color: #aaa;
+    font-style: italic;
+  }
+
+  /* PRICING */
+  .pricing-section {
+    background: var(--forest);
+    color: #fff;
+  }
+
+  .pricing-section .section-label { color: var(--gold-light); }
+  .pricing-section .section-title { color: #fff; }
+  .pricing-section .section-desc { color: rgba(255, 255, 255, 0.6); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .price-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 36px;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .price-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+  }
+
+  .price-card.featured {
+    background: rgba(200, 169, 110, 0.12);
+    border-color: rgba(200, 169, 110, 0.3);
+  }
+
+  .price-card.featured::after {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--forest);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 4px 14px;
+    border-radius: 10px;
+  }
+
+  .price-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin: 16px 0;
+  }
+
+  .price-amount span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .price-features {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+    text-align: left;
+  }
+
+  .price-features li {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 8px 0;
+    padding-left: 22px;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .price-features li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--forest);
+    font-weight: 600;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btn-gold:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ABOUT */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-text .section-desc { margin-bottom: 24px; }
+
+  .about-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .value {
+    padding: 20px;
+    background: var(--warm);
+    border-radius: 12px;
+  }
+
+  .value h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--forest);
+    margin-bottom: 6px;
+  }
+
+  .value p {
+    font-size: 0.82rem;
+    color: #888;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .about-visual {
+    background: var(--warm);
+    border-radius: 20px;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+  }
+
+  .about-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--forest);
+    line-height: 1.5;
+    position: relative;
+  }
+
+  .about-quote::before {
+    content: '\201C';
+    font-size: 4rem;
+    color: var(--gold-light);
+    position: absolute;
+    top: -30px;
+    left: -10px;
+    line-height: 1;
+  }
+
+  .about-attribution {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, var(--warm) 0%, var(--cream) 100%);
+    text-align: center;
+  }
+
+  .cta-section .section-title {
+    font-size: 2.8rem;
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+
+  .cta-section .section-desc {
+    max-width: 500px;
+    margin: 0 auto 36px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255, 255, 255, 0.5);
+    padding: 50px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  footer p {
+    font-size: 0.82rem;
+    margin-top: 6px;
+  }
+
+  .footer-links {
+    margin: 20px 0;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      padding: 24px;
+      gap: 16px;
+      border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+    }
+
+    .hero h1 { font-size: 2.4rem; }
+    .hero p { font-size: 0.95rem; }
+
+    .steps { grid-template-columns: 1fr; gap: 20px; }
+    .holidays-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .about-content { grid-template-columns: 1fr; gap: 30px; }
+    .about-values { grid-template-columns: 1fr; }
+
+    .section-title { font-size: 1.8rem; }
+    .cta-section .section-title { font-size: 2rem; }
+
+    section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Holiday Helpers <span>Co.</span></div>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#book" class="nav-cta">Book Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Making memories, one holiday at a time</div>
+    <h1>We Bring the <em>Magic</em> So You Can Be in the <em>Moment</em></h1>
+    <p>Professional holiday setup and styling for families who want the wonder without the work. From leprechaun visits to birthday morning transformations.</p>
+    <div class="hero-buttons">
+      <a href="#book" class="btn btn-primary">Book Your Holiday</a>
+      <a href="#services" class="btn btn-outline">See Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">Simple as 1, 2, 3</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Pick Your Holiday</h3>
+        <p>Choose the holiday or occasion and your package tier. Tell us about your family, kids' ages, and any themes they love.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>We Set the Scene</h3>
+        <p>Our helpers arrive while the house is quiet and transform your space into something truly magical. No stress for you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Watch the Wonder</h3>
+        <p>Wake up to wide eyes and pure joy. That's it. You didn't have to stay up until 2 AM. You're welcome.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">Our Services</div>
+    <div class="section-title">Every Holiday, Handled</div>
+    <div class="section-desc">From the big ones to the everyday moments that matter. Each service is fully customizable to your family.</div>
+
+    <div class="holidays-grid">
+
+      <div class="holiday-card st-patricks">
+        <span class="holiday-emoji">&#9752;</span>
+        <h3>St. Patrick's Day</h3>
+        <div class="service-name">Leprechaun Visit</div>
+        <ul>
+          <li>Tiny green footprints through the house</li>
+          <li>"Mischief scene" (flipped chairs, green toilet water, gold coins)</li>
+          <li>Rainbow breakfast setup</li>
+          <li>Mini door + handwritten note from the leprechaun</li>
+          <li class="optional">Optional: crocheted "lucky charm" keepsake</li>
+        </ul>
+      </div>
+
+      <div class="holiday-card easter">
+        <span class="holiday-emoji">&#127799;</span>
+        <h3>Easter</h3>
+        <div class="service-name">Easter Bunny Trail</div>
+        <ul>
+          <li>Bunny footprints (flour or chalk)</li>
+          <li>Half-eaten carrots left behind</li>
+          <li>Pre-set egg hunt (color-coded by child)</li>
+          <li>Personalized baskets, beautifully styled</li>
+          <li>Doorstep pastel wreath or entry display</li>
+        </ul>
+      </div>
+
+      <div class="holiday-card halloween">
+        <span class="holiday-emoji">&#127875;</span>
+        <h3>Halloween</h3>
+        <div class="service-name">Spooky Setup</div>
+        <ul>
+          <li>Porch transformation (pumpkins, lanterns, witch hats)</li>
+          <li>"A ghost visited" footprints + mysterious note</li>
+          <li>Mini indoor "haunted corner" (kid-friendly)</li>
+          <li>Trick-or-treat station setup</li>
+          <li class="optional">Optional: costume reveal surprise</li>
+        </ul>
+      </div>
+
+      <div class="holiday-card thanksgiving">
+        <span class="holiday-emoji">&#127810;</span>
+        <h3>Thanksgiving</h3>
+        <div class="service-name">Gratitude Gathering</div>
+        <ul>
+          <li>Kids table setup (name cards, crayons, crafts)</li>
+          <li>"Turkey was here" footprints or feathers</li>
+          <li>Gratitude jar or notes activity</li>
+          <li>Cozy fall doorstep display (wreath, pumpkins)</li>
+          <li>Morning surprise (cinnamon rolls + note)</li>
+        </ul>
+      </div>
+
+      <div class="holiday-card valentines">
+        <span class="holiday-emoji">&#10084;</span>
+        <h3>Valentine's Day</h3>
+        <div class="service-name">Love Note Drop</div>
+        <ul>
+          <li>Heart-shaped breakfast setup</li>
+          <li>Room surprise with balloons or decor</li>
+          <li>Doorstep pink &amp; red styling</li>
+        </ul>
+      </div>
+
+      <div class="holiday-card fourth">
+        <span class="holiday-emoji">&#127878;</span>
+        <h3>Fourth of July</h3>
+        <div class="service-name">Stars & Spark Setup</div>
+        <ul>
+          <li>Backyard picnic styling</li>
+          <li>Red, white, and blue breakfast moment</li>
+          <li>Safe sparkler station</li>
+          <li>Doorstep patriotic display</li>
+        </ul>
+      </div>
+
+      <div class="holiday-card birthday">
+        <span class="holiday-emoji">&#127874;</span>
+        <h3>Birthdays</h3>
+        <div class="service-name">Birthday Morning Magic</div>
+        <ul>
+          <li>Wake-up room transformation (balloons, streamers)</li>
+          <li>Door sign or yard display moment</li>
+          <li>Breakfast tray setup</li>
+          <li>Personalized theme touches</li>
+        </ul>
+      </div>
+
+      <div class="holiday-card everyday">
+        <span class="holiday-emoji">&#10024;</span>
+        <h3>Everyday Magic</h3>
+        <div class="service-name">Recurring & On-Demand</div>
+        <ul>
+          <li><strong>Tooth Fairy Visit:</strong> Glitter trail, tiny note, crochet keepsake, "receipt" for the tooth</li>
+          <li><strong>First Day of School:</strong> Backpack surprise, lunchbox notes, front porch photo moment</li>
+          <li><strong>Rainy Day Rescue:</strong> Surprise craft/activity box, cozy indoor play setup</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="section-label">Pricing</div>
+    <div class="section-title">Choose Your Level of Magic</div>
+    <div class="section-desc">Every package is tailored to your family. No two setups are ever the same.</div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Mini Magic</h3>
+        <div class="price-amount">$30 <span>- $50</span></div>
+        <ul class="price-features">
+          <li>Small-scale setup</li>
+          <li>Handwritten character note</li>
+          <li>Footprints or trail detail</li>
+          <li>Perfect for smaller holidays</li>
+        </ul>
+        <a href="#book" class="btn btn-gold">Book Mini Magic</a>
+      </div>
+
+      <div class="price-card featured">
+        <h3>Full Experience</h3>
+        <div class="price-amount">$75 <span>- $150</span></div>
+        <ul class="price-features">
+          <li>Complete scene transformation</li>
+          <li>All props and materials included</li>
+          <li>Personalized to your kids</li>
+          <li>Optional next-day cleanup</li>
+          <li>Photo-ready setup</li>
+        </ul>
+        <a href="#book" class="btn btn-gold">Book Full Experience</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Deluxe Keepsake</h3>
+        <div class="price-amount">$150<span>+</span></div>
+        <ul class="price-features">
+          <li>Everything in Full Experience</li>
+          <li>Handmade crochet keepsake item</li>
+          <li>Extra personalized elements</li>
+          <li>Premium props and materials</li>
+          <li>Priority scheduling</li>
+        </ul>
+        <a href="#book" class="btn btn-gold">Book Deluxe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-text">
+        <div class="section-label">About Us</div>
+        <div class="section-title">Magic Shouldn't Be Stressful</div>
+        <div class="section-desc">We started Holiday Helpers Co. because we believe parents deserve to be in the moment too. No more staying up until 2 AM arranging elf scenes. No more stress over making it "perfect enough." We handle the setup. You get the smiles.</div>
+        <div class="about-values">
+          <div class="value">
+            <h4>Handcrafted</h4>
+            <p>Every detail is thoughtful and made with care, including handmade crochet keepsakes.</p>
+          </div>
+          <div class="value">
+            <h4>Personalized</h4>
+            <p>We learn your kids' names, ages, and interests. Every setup is one of a kind.</p>
+          </div>
+          <div class="value">
+            <h4>Discreet</h4>
+            <p>We arrive quietly and leave without a trace. The magic just... appears.</p>
+          </div>
+          <div class="value">
+            <h4>Year-Round</h4>
+            <p>Not just the big holidays. Tooth fairy visits, first days, rainy days, and more.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-quote">
+          Every child deserves to believe in a little magic, and every parent deserves to watch it happen without the stress.
+        </div>
+        <div class="about-attribution">- Holiday Helpers Co.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="book" class="cta-section">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">Let's Make Some Magic</div>
+    <div class="section-desc">Tell us the holiday, tell us about your family, and we'll handle the rest. First-time families get 15% off.</div>
+    <div class="hero-buttons">
+      <a href="mailto:hello@holidayhelpersco.com?subject=Booking%20Inquiry" class="btn btn-primary">Get in Touch</a>
+      <a href="tel:+1234567890" class="btn btn-outline">Call Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Holiday Helpers <span>Co.</span></div>
+  <p>We bring the magic so you can be in the moment.</p>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#book">Book</a></li>
+  </ul>
+  <p>&copy; 2026 Holiday Helpers Co. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

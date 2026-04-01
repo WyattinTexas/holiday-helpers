@@ -34,10 +34,26 @@
     line-height: 1.6;
   }
 
+  /* TOP BANNER */
+  .top-banner {
+    background: var(--forest);
+    color: var(--gold-light);
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 24px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 101;
+  }
+
   /* NAV */
   nav {
     position: fixed;
-    top: 0;
+    top: 33px;
     width: 100%;
     background: rgba(255, 248, 240, 0.95);
     backdrop-filter: blur(10px);
@@ -115,7 +131,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 120px 24px 80px;
+    padding: 153px 24px 80px;
     background: linear-gradient(180deg, var(--cream) 0%, var(--warm) 100%);
     position: relative;
     overflow: hidden;
@@ -660,6 +676,9 @@
 </style>
 </head>
 <body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">Serving Southwest Florida</div>
 
 <!-- NAV -->
 <nav>
